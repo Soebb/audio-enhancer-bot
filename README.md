@@ -1,6 +1,7 @@
 # dolby-audio
 
 **To run:** please use process-audio.py to run your audio enhancement. 
+**note**: add .env file with api keys as added in the example.env file
 
 **Function scripts:**
 Modify these scripts if you want to change any parameters. Otherwise, these are good to go.
