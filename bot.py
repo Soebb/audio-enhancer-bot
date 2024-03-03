@@ -39,9 +39,9 @@ async def start(bot, update):
 async def enhance(bot, m):
     fname = m.audio.file_name
     msg = await m.reply("Downloading..")
-    await bot.download_media(message=m, file_name="input.mp3")
+    input = await bot.download_media(message=m, file_name="input.mp3")
     await msg.edit_text("Processing..")
-    enhancer = AudioProcessing("input.mp3", "input", fname, fname+".mp3")
+    enhancer = AudioProcessing(input, "input", fname, fname+".mp3")
     enhancer.run()
     await m.reply_document(fname+".mp3")
     os.remove("input.mp3")
