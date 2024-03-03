@@ -21,7 +21,7 @@ def upload_audio(input_path, input_name):
     }
 
     body = {
-        "url": f"dlb://{input_name}.mp3",
+        "url": f"dlb://in/{input_name}.mp3",
     }
 
     response = requests.post(url, json=body, headers=headers)
