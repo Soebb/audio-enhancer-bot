@@ -6,15 +6,15 @@ import json
 def download_audio(output_name, output_path):
     APP_KEY = os.environ.get("API_KEY")  # Replace with your actual app key
     APP_SECRET = os.environ.get("API_SECRET")  # Replace with your actual secret key
-
+    """
     payload = {'grant_type': 'client_credentials', 'expires_in': 1800}
     response = requests.post('https://api.dolby.io/v1/auth/token', data=payload, auth=requests.auth.HTTPBasicAuth(APP_KEY, APP_SECRET))
     body = json.loads(response.content)
     api_token = body['access_token']
-
+    """
     url = "https://api.dolby.com/media/output"
     headers = {
-        "Authorization": "Bearer {0}".format(api_token),
+        "x-api-key": APP_KEY,
         "Content-Type": "application/json",
         "Accept": "application/json"
     }
