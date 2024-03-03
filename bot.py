@@ -4,7 +4,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from process_audio import AudioProcessing
 
 Bot = Client(
-    "PersianTranscriberBot",
+    "audioBot",
     bot_token = os.environ["BOT_TOKEN"],
     api_id = int(os.environ["API_ID"]),
     api_hash = os.environ["API_HASH"]
@@ -37,13 +37,15 @@ async def start(bot, update):
 
 @Bot.on_message(filters.private & filters.audio)
 async def enhance(_, m):
+    fname = m.audio.file_name
     msg = await m.reply("Downloading..")
     await m.download("input.mp3")
     await msg.edit_text("Processing..")
-    enhancer = AudioProcessing("input.mp3", "input", m.audio.file_name, "./")
+    enhancer = AudioProcessing("input.mp3", "input", fname, fname+".mp3")
     enhancer.run()
-    await m.reply_document(m.audio.file_name + ".mp3")
+    await m.reply_document(fname+".mp3")
     os.remove("input.mp3")
+    os.remove(fname+".mp3")
 
 
 Bot.run()
