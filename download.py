@@ -23,7 +23,7 @@ def download_audio(output_name, output_path):
     }
 
     with requests.get(url, params=args, headers=headers, stream=True) as response:
-        response.raise_for_status()
+        #response.raise_for_status()
         response.raw.decode_content = True
         print("Downloading from {0} into {1}".format(response.url, output_path))
         with open(output_path, "wb") as output_file:
