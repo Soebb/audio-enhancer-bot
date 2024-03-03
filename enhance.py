@@ -3,8 +3,8 @@ import requests
 import json
 
 def enhance_audio(input_name, output_name):
-    APP_KEY = os.getenv("DOLBY_AUDIO_KEY")  # Replace with your actual app key
-    APP_SECRET = os.getenv("DOLBY_API_KEY")  # Replace with your actual secret key
+    APP_KEY = os.environ.get("API_KEY")  # Replace with your actual app key
+    APP_SECRET = os.environ.get("API_SECRET")  # Replace with your actual secret key
 
     payload = {'grant_type': 'client_credentials', 'expires_in': 1800}
     response = requests.post('https://api.dolby.io/v1/auth/token', data=payload, auth=requests.auth.HTTPBasicAuth(APP_KEY, APP_SECRET))
