@@ -43,7 +43,7 @@ async def enhance(bot, m):
     await msg.edit_text("Processing..")
     enhancer = AudioProcessing(input, "input", fname, fname+".mp3")
     enhancer.run()
-    await m.reply_document(fname+".mp3")
+    await m.reply_document(fname)
     os.remove(os.path.abspath(input))
     os.remove(fname+".mp3")
 
